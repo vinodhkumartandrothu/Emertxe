@@ -1,0 +1,25 @@
+#!/bin/bash 
+declare -a a=(`cat ../../../etc/passwd | cut -d ':' -f 1`)
+x=${#a[@]}
+echo $x
+
+for((i=0;i<x;i++))
+do 
+echo "${a[$i]}"
+done
+echo "enter the search elements"
+read username
+
+for((i=0;i<x;i++))
+do
+if [ $username = ${a[$i]} ]
+then
+k=1
+fi 
+done
+if [ $k -eq 1 ]
+then
+echo "$username is present"
+else
+echo "username is not present"
+fi
